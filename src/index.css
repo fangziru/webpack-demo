@@ -1,0 +1,11 @@
+body,html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-color: rgb(231, 228, 232);
+}
+
+div:nth-child(2n) {
+    background-color: rgb(255, 0, 0);
+}
