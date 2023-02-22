@@ -6,10 +6,15 @@ module.exports = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         filename: 'bundle.[contenthash].js',
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        assetModuleFilename: 'images/[name][ext][query]' // 设置静态资源输出目录名称
     },
     module: {
         rules: [
+            {
+                test: /\.jpg/,
+                type: 'asset/resource'
+            },
             {
                 test: /\.js$/,
                 use: ['babel-loader'],
