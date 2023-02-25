@@ -3,6 +3,8 @@ import './font/iconfont.css'
 import printMe from './js/print'
 import demoImg from './images/demo.jpg'
 import es6test from './js/es6test'
+import {joinArr} from './js/utils'
+console.log(joinArr(['a','b']))
 printMe()
 // print里代码发生变化，只更新这个文件的内容，整体页面不变
 if (module.hot) {
