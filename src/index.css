@@ -3,9 +3,9 @@ body,html{
     height: 100%;
 }
 body{
-    background-color: rgb(231, 228, 232);
+    background-color: rgb(242, 232, 245);
 }
 
 div:nth-child(2n) {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(170, 255, 0);
 }

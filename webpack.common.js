@@ -1,13 +1,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 module.exports = {
     entry: path.join(__dirname, 'src', 'index.js'),
-    output: {
-        filename: '[name].js',
-        path: path.join(__dirname, 'dist')
-    },
     module: {
         rules: [
             {
@@ -18,10 +16,10 @@ module.exports = {
                     filename: 'static/images/[hash][ext][query]'
                 }
             },
-            // {
-            //     test: /\.(ttf|woff|woff2)/,
-            //     type: 'asset/inline'
-            // },
+            {
+                test: /\.(ttf|woff|woff2)/,
+                type: 'asset/inline'
+            },
             {
                 test: /\.js$/,
                 use: ['babel-loader'],
@@ -31,7 +29,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 include: path.join(__dirname, 'src'),//包含哪些目录做babel转译
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
                 exclude: /node_modules/
             }
         ]
@@ -41,11 +39,17 @@ module.exports = {
             template: path.join(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin()
     ],
+    performance: false,
     optimization: {
         splitChunks: {
             chunks: 'all'
-        }
+        },
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin()
+        ]
     }
 }

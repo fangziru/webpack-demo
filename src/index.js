@@ -25,9 +25,10 @@ btn.innerHTML = '点击'
 document.body.appendChild(btn)
 
 btn.onclick = function () {
-    var div = document.createElement('div')
-    div.innerHTML = 'item'
-    document.body.appendChild(div)
+    // 异步加载，使用/* webpackPrefetch: true */魔法注释，等待核心代码加载完成后，空闲时间加载此代码
+    import(/* webpackPrefetch: true */ './js/click').then(({default: fn}) => {
+        fn()
+    })
 }
 
 console.log(es6test.name)
