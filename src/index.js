@@ -32,5 +32,4 @@ btn.onclick = function () {
 }
 
 console.log(es6test.name)
-console.log(es6test.number)
 es6test.sayHi()
