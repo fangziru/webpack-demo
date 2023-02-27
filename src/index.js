@@ -33,3 +33,13 @@ btn.onclick = function () {
 
 console.log(es6test.name)
 es6test.sayHi()
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(register => {
+            console.log('service-worker registed')
+        }).catch(error => {
+            console.log('service-worker register error')
+        })
+    })
+}
