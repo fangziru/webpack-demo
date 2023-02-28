@@ -6,6 +6,9 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 module.exports = {
     entry: path.join(__dirname, 'src', 'index.js'),
+    resolveLoader: {
+        modules: ['node_modules', './loaders']
+    },
     module: {
         rules: [
             {
@@ -22,7 +25,14 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: ['babel-loader'],
+                use: [{
+                    loader: 'babel-loader'
+                },{
+                    loader: 'replaceLoader',
+                    options: {
+                        name: 'hi'
+                    }
+                }],
                 include: path.join(__dirname, 'src'),//包含哪些目录做babel转译
                 exclude: /node_modules/
             },

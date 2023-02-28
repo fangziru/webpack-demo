@@ -43,3 +43,4 @@ if ('serviceWorker' in navigator) {
         })
     })
 }
+console.log('hello world')
