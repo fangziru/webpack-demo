@@ -4,6 +4,8 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
+const CopyrightWebpackPlugin = require('./plugins/copyright-webpack-plugin')
+
 module.exports = {
     entry: path.join(__dirname, 'src', 'index.js'),
     resolveLoader: {
@@ -50,7 +52,8 @@ module.exports = {
             filename: 'index.html'
         }),
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new CopyrightWebpackPlugin()
     ],
     performance: false,
     optimization: {

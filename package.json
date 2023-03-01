@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "start": "http-server dist"
+    "start": "http-server dist",
+    "debug": "node --inspect --inspect-brk node_modules/webpack/bin/webpack.js"
   },
   "keywords": [],
   "author": "",
